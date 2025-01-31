@@ -1,3 +1,52 @@
+
+flowchart TD
+    A[User Interaction\nFilterComponent] -->|Triggers| B[Action Creator\nfilterValueChange]
+    B -->|Dispatches Action| C[Reducer\nfiltersReducer\nfilterCountReducer]
+    C -->|Updates| D[Redux Store\nState]
+    D -->|Notifies| E[State Update\nDispatch Action]
+    E -->|Updates| F[React Component\nParentComponent]
+    D -->|Accessed by| G[Selector\ngetFilterValue\ngetFilterCount]
+    G -->|Provides Data| F
+    F -->|Re-renders| A
+    
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#bbf,stroke:#333,stroke-width:2px
+    style C fill:#dfd,stroke:#333,stroke-width:2px
+    style D fill:#fdd,stroke:#333,stroke-width:2px
+    style E fill:#ddf,stroke:#333,stroke-width:2px
+    style F fill:#ffd,stroke:#333,stroke-width:2px
+    style G fill:#dff,stroke:#333,stroke-width:2px
+
+# User Interaction:
+
+The user interacts with the FilterComponent by typing into an input field.
+# Action Creator:
+
+The handleChange function in FilterComponent calls the filterValueChange action creator with the new input value.
+filterValueChange returns an action object with the type FILTERS_ACTIONS.FILTER_VALUE_CHANGE and the new value as the payload.
+Dispatch Action:
+
+The action is dispatched to the Redux store.
+# Reducers:
+
+The Redux store passes the action to all registered reducers.
+filtersReducer updates the filterValue in the state.
+filterCountReducer increments the filterCount each time the FILTER_VALUE_CHANGE action is dispatched.
+# Update State:
+
+The state in the Redux store is updated with the new filterValue and filterCount.
+# React Component:
+
+ParentComponent is connected to the Redux store and receives the updated state through mapStateToProps.
+# Selectors:
+
+getFilterValue selector extracts the current filterValue from the state.
+getFilterCount selector extracts the current filterCount from the state.
+Re-render:
+
+# ParentComponent re-renders based on the updated state, displaying the new filter value and the count of how many times the filter value has been changed.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,21 +1,68 @@
 
-flowchart TD
-    A[User Interaction\nFilterComponent] -->|Triggers| B[Action Creator\nfilterValueChange]
-    B -->|Dispatches Action| C[Reducer\nfiltersReducer\nfilterCountReducer]
-    C -->|Updates| D[Redux Store\nState]
-    D -->|Notifies| E[State Update\nDispatch Action]
-    E -->|Updates| F[React Component\nParentComponent]
-    D -->|Accessed by| G[Selector\ngetFilterValue\ngetFilterCount]
-    G -->|Provides Data| F
-    F -->|Re-renders| A
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+    <!-- Styles -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+        </marker>
+    </defs>
     
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style C fill:#dfd,stroke:#333,stroke-width:2px
-    style D fill:#fdd,stroke:#333,stroke-width:2px
-    style E fill:#ddf,stroke:#333,stroke-width:2px
-    style F fill:#ffd,stroke:#333,stroke-width:2px
-    style G fill:#dff,stroke:#333,stroke-width:2px
+    <!-- Boxes -->
+    <!-- User Interaction -->
+    <rect x="50" y="50" width="200" height="80" rx="10" fill="#ff99ff" stroke="#333" stroke-width="2"/>
+    <text x="150" y="80" text-anchor="middle" font-size="14">User Interaction</text>
+    <text x="150" y="100" text-anchor="middle" font-size="14">(FilterComponent)</text>
+    
+    <!-- Action Creator -->
+    <rect x="50" y="200" width="200" height="80" rx="10" fill="#bbbbff" stroke="#333" stroke-width="2"/>
+    <text x="150" y="230" text-anchor="middle" font-size="14">Action Creator</text>
+    <text x="150" y="250" text-anchor="middle" font-size="14">(filterValueChange)</text>
+    
+    <!-- Reducer -->
+    <rect x="50" y="350" width="200" height="80" rx="10" fill="#ddffdd" stroke="#333" stroke-width="2"/>
+    <text x="150" y="380" text-anchor="middle" font-size="14">Reducer</text>
+    <text x="150" y="400" text-anchor="middle" font-size="12">(filtersReducer, filterCountReducer)</text>
+    
+    <!-- Redux Store -->
+    <rect x="350" y="200" width="200" height="80" rx="10" fill="#ffdddd" stroke="#333" stroke-width="2"/>
+    <text x="450" y="230" text-anchor="middle" font-size="14">Redux Store</text>
+    <text x="450" y="250" text-anchor="middle" font-size="14">(State)</text>
+    
+    <!-- State Update -->
+    <rect x="550" y="350" width="200" height="80" rx="10" fill="#ddddff" stroke="#333" stroke-width="2"/>
+    <text x="650" y="380" text-anchor="middle" font-size="14">State Update</text>
+    <text x="650" y="400" text-anchor="middle" font-size="14">(Dispatch Action)</text>
+    
+    <!-- React Component -->
+    <rect x="550" y="50" width="200" height="80" rx="10" fill="#ffffdd" stroke="#333" stroke-width="2"/>
+    <text x="650" y="80" text-anchor="middle" font-size="14">React Component</text>
+    <text x="650" y="100" text-anchor="middle" font-size="14">(ParentComponent)</text>
+    
+    <!-- Selector -->
+    <rect x="350" y="500" width="200" height="80" rx="10" fill="#ddffff" stroke="#333" stroke-width="2"/>
+    <text x="450" y="530" text-anchor="middle" font-size="14">Selector</text>
+    <text x="450" y="550" text-anchor="middle" font-size="12">(getFilterValue, getFilterCount)</text>
+    
+    <!-- Arrows -->
+    <!-- User Interaction to Action Creator -->
+    <path d="M150 130 L150 200" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" fill="none"/>
+    <!-- Action Creator to Reducer -->
+    <path d="M150 280 L150 350" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" fill="none"/>
+    <!-- Reducer to Store -->
+    <path d="M250 390 L450 280" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" fill="none"/>
+    <!-- Store to State Update -->
+    <path d="M550 240 L650 350" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" fill="none"/>
+    <!-- State Update to React Component -->
+    <path d="M650 350 L650 130" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" fill="none"/>
+    <!-- Store to Selector -->
+    <path d="M450 280 L450 500" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" fill="none"/>
+    <!-- Selector to React Component -->
+    <path d="M550 540 L700 130" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" fill="none"/>
+    <!-- React Component to User Interaction -->
+    <path d="M550 90 L250 90" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" fill="none"/>
+</svg>
+
+
 
 # User Interaction:
 
